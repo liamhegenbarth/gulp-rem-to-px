@@ -1,0 +1,17 @@
+{
+  "name": "gulp-rem-to-px",
+  "description": "Convert rem units to pixels",
+  "version": "0.1.0",
+  "homepage": "http://github.com/liamhegenbarth/gulp-rem-to-px",
+  "repository": "git://github.com/liamhegenbarth/gulp-rem-to-px.git",
+  "author": "Liam Hegenbarth <mail@liamhegenbarth.co.uk> (http://www.liamhegenbarth.co.uk/)",
+  "main": "./index.js",
+  "keywords": [
+    "gulpplugin"
+  ],
+  "devDependencies": {},
+  "dependencies": {
+  	"gulp-util": "^3.0.2",
+    "through2": "^0.6.3"
+  }
+}
