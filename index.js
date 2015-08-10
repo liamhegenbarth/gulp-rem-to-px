@@ -18,17 +18,21 @@ var transform = function(file, opts) {
 		temp 	= '',
 		match 	= css.match(regex);
 
-	for (i=0; i < match.length; i++) {
+	if (match) {
 
-		temp = temp || css,
+		for (i=0; i < match.length; i++) {
 
-		split = match[i].split('rem'),
+			temp = temp || css,
 
-		px = parseInt(split[0] * fontSize) + 'px',
+			split = match[i].split('rem'),
 
-		value = match[i].replace(match[i], px);
+			px = parseInt(split[0] * fontSize) + 'px',
 
-		temp = temp.replace(single, value);
+			value = match[i].replace(match[i], px);
+
+			temp = temp.replace(single, value);
+
+		}
 
 	}
 
