@@ -4,9 +4,11 @@ var through 	= require('through2'),
 
 const PLUGIN_NAME = 'gulp-rem-to-px';
 
-var transform = function(file, opts) {
 
-	opts 	= opts || {};
+var transform = function(file, opts)
+{
+
+	opts = opts || {};
 
 	var fontSize = (opts.fontSize == null) ? 16 : opts.fontSize;
 
@@ -18,22 +20,31 @@ var transform = function(file, opts) {
 		temp 	= '',
 		match 	= css.match(regex);
 
-	if (match) {
 
-		for (i=0; i < match.length; i++) {
+	if ( match )
+	{
 
-			temp = temp || css,
+		for ( var i = 0; i < match.length; i++ )
+		{
 
-			split = match[i].split('rem'),
+			temp = temp || css;
 
-			px = parseInt(split[0] * fontSize) + 'px',
 
-			value = match[i].replace(match[i], px);
+			var split = match[i].split('rem'),
+
+				px = parseInt(split[0] * fontSize) + 'px',
+
+				value = match[i].replace(match[i], px);
+
 
 			temp = temp.replace(single, value);
 
 		}
 
+	}
+	else
+	{
+		temp = css;
 	}
 
 	temp = new Buffer(temp);
@@ -43,21 +54,21 @@ var transform = function(file, opts) {
 }
 
 
-var remToPx = function(opts) {
+var remToPx = function(opts)
+{
 
-	var stream = through.obj(function(file, enc, cb) {
+	var stream = through.obj(function(file, enc, cb)
+	{
 		
-		if (file.isStream()) {
-
+		if ( file.isStream() )
+		{
 			this.emit('error', new PluginError(PLUGIN_NAME, 'Streams not supported!'));
 			return cb();
-
 		}
 
-		if (file.isBuffer()) {
-			
+		if ( file.isBuffer() )
+		{
 			file.contents = transform(file.contents, opts);
-
 		}
 
 		this.push(file);
