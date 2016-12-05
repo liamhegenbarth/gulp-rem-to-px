@@ -19,7 +19,8 @@ gulp.task('legacy-ie', function()
 		.pipe(gulp.dest(./));
 });
 
-gulp.task('legacy-ie-12px', function(){
+gulp.task('legacy-ie-12px', function()
+{
 	gulp.src('./style.css'),   
 		.pipe(remToPx({
     		fontSize : 12
